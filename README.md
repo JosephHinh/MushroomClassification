@@ -17,6 +17,7 @@ In total, there were 8,124 mushrooms. 22 features of each mushroom were provided
 #### Data Visualization
 
 Show a few visualization of the data and say a few words about what you see.
+![](figure1.png)
 
 ### Problem Formulation
 
