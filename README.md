@@ -19,24 +19,18 @@ In total, there were 8,124 mushrooms. 22 features of each mushroom were provided
 This "Importance Chart" ranks each feature on how much they differ between edible and poisonous mushrooms based on their value distributions.
 ![](figure1.png)
 
-For instance, `odor` was a very strong
+For instance, `odor` was a very strong feature for differentiating between edible and poisonous mushrooms. Each category in every feature was almost exclusively full of only edible or only poisonous mushrooms.
+![](figure2.png) 
+
+On the other hand, `cap-shape` has several categories whose value distributions were very similar, such as having a convex, flat, or knobbed cap shape. This feature will be less helpful than others for my machine model to differentiate between classees.
 
 ### Problem Formulation
 
-* Define:
-  * Input / Output
-  * Models
-    * Describe the different models you tried and why.
-  * Loss, Optimizer, other Hyperparameters.
+The input is a set of features corresponding to physical trait. The output is a binary label where 0 represents edible, and 1 represents poisonous. Originally, Random Forest was the model of choice, but the decision tree yielded a 100% accuracy rate and raised a concern of a faulty dataset. The Logistic Regression was favored due to being a simpler model and would provide a better metric to see if data cleanup was unsuccessful or if there was data leakage. I used scikit-learn's default solver, lbfgs, with an arbitrary seed value, 42, for reproducibility. No hyperparameter tuning was performed in this phase.
 
 ### Training
 
-* Describe the training:
-  * How you trained: software and hardware.
-  * How did training take.
-  * Training curves (loss vs epoch for test/train).
-  * How did you decide to stop training.
-  * Any difficulties? How did you resolve them?
+Training was performed in a jupyter notebook via Google Colaboratory with several imported packages: pandas, seaborn, matplotlib, and several sklearn packages. This project was completed on a standard Windows device. The dataset was small, so no GPU acceleration or trimming was required. Training only took a few seconds because Logistic Regression is a relatively simple model and the dataset was pretty small. The use of Logistic Regression trains the model without epochs, so there are no training curves to provide. Training stopped automatically because several test runs got 100% accuracy ratings. I ran into several difficulties pertaining the suspiciously high accuracy of my machine. I eliminated several factors to make sure that everything was coded properly. Firstly, I simplified the model I used by swapping from a decision tree to Logistic Regression. This still resulted in a perfect accuracy rating, so I continued removing highly important features, like `odor`, `spore-print-color`, and `gill-color`, until I got an accuracy rate of 99.7%. I decided to not continue removing features, as this imperfect score guarantees that I did not make an error with my one-hot encoded class.
 
 ### Performance Comparison
 
