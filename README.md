@@ -12,7 +12,7 @@ The "Mushroom Classification" dataset does not come with a particular Kaggle Cha
 
 ### Data and Clean-Up
 
-In total, there were 8,124 mushrooms. 22 features of each mushroom were provided that responded to their physical characteristics, ranging from color, smell, size, shape, population trends, location, etc. There was no test training set provided, so I split the data into 80% (6499 data points) for training and 20% (1,625 data points) for testing. The `stalk-root` feature had several missing data points that were distinctly labelled with "?". I cleaned these up to be properly empty (NaN) data points. I removed the `veil-type` feature because all 8,124 data points full under the same category. After getting a perfect accuracy score with different models, three features of "high importance" (`odor`, `spore-print-color`, and `gill-color`) were removed to make sure that the perfect accuracy was not from the presense of the one-hot encoded binary classification of the class.
+In total, there were 8,124 mushrooms. 22 features of each mushroom were provided that responded to their physical characteristics, ranging from color, smell, size, shape, population trends, location, etc. There was no test training set provided, so I split the data into 80% (6499 data points) for training and 20% (1,625 data points) for testing. The `stalk-root` feature had several missing data points that were distinctly labelled with "?". I cleaned these up to be properly empty (NaN) data points. I removed the `veil-type` feature because all 8,124 data points full under the same category. After getting a perfect accuracy score with different models, I removed the `odor` feautre due to its high importance. Even after removing odor, the machine was still 100% accurate. I continued by removing two additional features of high importance, `spore-print-color`, and `gill-color`, in order to get a 99.7% accuracy rate.
 
 #### Data Visualization
 
@@ -23,31 +23,35 @@ For instance, `odor` was a very strong feature for differentiating between edibl
 ![](figure2.png) 
 
 On the other hand, `cap-shape` has several categories whose value distributions were very similar, such as having a convex, flat, or knobbed cap shape. This feature will be less helpful than others for my machine model to differentiate between classees.
+![](figure3.png) 
 
 ### Problem Formulation
 
-The input is a set of features corresponding to physical trait. The output is a binary label where 0 represents edible, and 1 represents poisonous. Originally, Random Forest was the model of choice, but the decision tree yielded a 100% accuracy rate and raised a concern of a faulty dataset. The Logistic Regression was favored due to being a simpler model and would provide a better metric to see if data cleanup was unsuccessful or if there was data leakage. I used scikit-learn's default solver, lbfgs, with an arbitrary seed value, 42, for reproducibility. No hyperparameter tuning was performed in this phase.
+The input is a set of features corresponding to physical trait. The output is a binary label where 0 represents edible, and 1 represents poisonous. Originally, Random Forest was the model of choice, but the decision tree yielded a 100% accuracy rate and raised a concern of a faulty dataset. The Logistic Regression was favored due to being a simpler model and would provide a better metric to see if data cleanup was unsuccessful or if there was data leakage. I used scikit-learn's default solver, lbfgs, with an arbitrary seed value, 42, for reproducibility. No hyperparameter tuning was performed because the model already returned a high accuracy.
 
 ### Training
 
-Training was performed in a jupyter notebook via Google Colaboratory with several imported packages: pandas, seaborn, matplotlib, and several sklearn packages. This project was completed on a standard Windows device. The dataset was small, so no GPU acceleration or trimming was required. Training only took a few seconds because Logistic Regression is a relatively simple model and the dataset was pretty small. The use of Logistic Regression trains the model without epochs, so there are no training curves to provide. Training stopped automatically because several test runs got 100% accuracy ratings. I ran into several difficulties pertaining the suspiciously high accuracy of my machine. I eliminated several factors to make sure that everything was coded properly. Firstly, I simplified the model I used by swapping from a decision tree to Logistic Regression. This still resulted in a perfect accuracy rating, so I continued removing highly important features, like `odor`, `spore-print-color`, and `gill-color`, until I got an accuracy rate of 99.7%. I decided to not continue removing features, as this imperfect score guarantees that I did not make an error with my one-hot encoded class.
+Training was performed in a jupyter notebook via Google Colaboratory with several imported packages: pandas, seaborn, matplotlib, and several sklearn packages. This project was completed on a standard Windows device. The dataset was small, so no GPU acceleration or trimming was required. Training only took a few seconds because Logistic Regression is a relatively simple model and the dataset was pretty small. The use of Logistic Regression trains the model without epochs, so there are no training curves to provide. Training stopped automatically because several test runs got 100% accuracy ratings.
+
+I ran into several difficulties pertaining the suspiciously high accuracy of my machine. I eliminated several factors to make sure that everything was coded properly. Firstly, I simplified the model I used by swapping from a decision tree to Logistic Regression. This still resulted in a perfect accuracy rating, so I continued removing highly important features, like `odor`, `spore-print-color`, and `gill-color`, until I got an accuracy rate of 99.7%. I decided to not continue removing features, as this imperfect score guarantees that I did not make an error with my one-hot encoded class.
 
 ### Performance Comparison
 
-* Clearly define the key performance metric(s).
-* Show/compare results in one table.
-* Show one (or few) visualization(s) of results, for example ROC curves.
+The machine was able to predict the edibility of a mushroom 99.7% of the time, from 100% after switching models and removing several important features.
+![](figure4.png) 
 
 ### Conclusions
 
-* State any conclusions you can infer from your work. Example: LSTM work better than GRU.
+The Mushroom Classification dataset is highly effective for training even the simplest models like Logistic Regression. It was able to reliably yield a 100% accuracy score, even after removing the single feature of highest distinction between classes, `odor`.
 
 ### Future Work
 
-* What would be the next thing that you would try.
-* What are some other studies that can be done starting from here.
+Because I confirmed that there was no error associated with my perfectly accurate machine, I feel safe returning to Random Forest classifier. Additionally, hyperparameter tuning could be done because we are no longer concerned about the unusually high accuracy rating.
 
-## How to reproduce results
+Because this dataset has a large amount of features, testing for varying levels of toxicity would be a comfortable next step to move away from a simply binary classification task and begin a new study.
+
+# ======================================== WIP ========================================
+## How to reproduce results 
 
 * In this section, provide instructions at least one of the following:
    * Reproduce your results fully, including training.
@@ -55,6 +59,7 @@ Training was performed in a jupyter notebook via Google Colaboratory with severa
    * Use this package to perform their own study.
 * Also describe what resources to use for this package, if appropirate. For example, point them to Collab and TPUs.
 
+# ======================================== WIP ========================================
 ### Overview of files in repository
 
 * Describe the directory structure, if any.
@@ -77,19 +82,26 @@ Training was performed in a jupyter notebook via Google Colaboratory with severa
 * If not standard, provide or point to instruction for installing the packages.
 * Describe how to install your package.
 
+# ======================================== WIP ========================================
+
 ### Data
 
 * Point to where they can download the data.
 * Lead them through preprocessing steps, if necessary.
 
+# ======================================== WIP ========================================
+
 ### Training
 
 * Describe how to train the model
+
+# ======================================== WIP ========================================
 
 #### Performance Evaluation
 
 * Describe how to run the performance evaluation.
 
+# ======================================== WIP ========================================
 
 ## Citations
 
