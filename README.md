@@ -2,31 +2,17 @@
 
 # Project Title
 
-* **One Sentence Summary** This repository holds an attempt to teach a machine to estimate whether or not a mushroom is poisonous from a list of 22 characteristics.
+This repository holds an attempt to teach a machine to estimate whether or not a mushroom is poisonous from a list of 22 characteristics.
 
 ## Overview
 
-* This section could contain a short paragraph which include the following:
-  * **Definition of the tasks / challenge**  Ex: The task, as defined by the Kaggle challenge is to use a time series of 12 features, sampled daily for 1 month, to predict the next day's price of a stock.
-  * **Your approach** Ex: The approach in this repository formulates the problem as regression task, using deep recurrent neural networks as the model with the full time series of features as input. We compared the performance of 3 different network architectures.
-  * **Summary of the performance achieved** Ex: Our best model was able to predict the next day stock price within 23%, 90% of the time. At the time of writing, the best performance on Kaggle of this metric is 18%.
+The "Mushroom Classification" dataset does not come with a particular Kaggle Challenge. Instead, parameters from outside of the Kaggle site were set to create our own challenge. I trained a model to predict whether or not a mushroom was edible based on their physical characteristics. The approach in this repository was to formulate the problem as a binary classification task with the Logistic Regression model. Originally, the Random Forest Classifier model was used, but a consistent 100% accuracy rate. A simpler model, like Logistic Regression, was favored in the end product to ensure that the code did not have a source of data leakage. After extensive data cleaning, the Logistic Regression model with several important features removed had an accuracy score of 99.7%. Other submissions on the Kaggle site had similar success, ranging from 99% to 100% accuracies.
 
 ## Summary of Workdone
 
-Include only the sections that are relevant an appropriate.
+### Data and Clean-Up
 
-### Data
-
-* Data:
-  * Type: For example
-    * Input: medical images (1000x1000 pixel jpegs), CSV file: image filename -> diagnosis
-    * Input: CSV file of features, output: signal/background flag in 1st column.
-  * Size: How much data?
-  * Instances (Train, Test, Validation Split): how many data points? Ex: 1000 patients for training, 200 for testing, none for validation
-
-#### Preprocessing / Clean up
-
-* Describe any manipulations you performed to the data.
+In total, there were 8,124 mushrooms. 22 features of each mushroom were provided that responded to their physical characteristics, ranging from color, smell, size, shape, population trends, location, etc. There was no test training set provided, so I split the data into 80% (6499 data points) for training and 20% (1,625 data points) for testing. The `stalk-root` feature had several missing data points that were distinctly labelled with "?". I cleaned these up to be properly empty (NaN) data points. I removed the `veil-type` feature because all 8,124 data points full under the same category. After getting a perfect accuracy score with different models, three features of "high importance" (`odor`, `spore-print-color`, and `gill-color`) were removed to make sure that the perfect accuracy was not from the presense of the one-hot encoded binary classification of the class.
 
 #### Data Visualization
 
