@@ -57,25 +57,16 @@ Because this dataset has a large amount of features, testing for varying levels 
    * Reproduce your results fully, including training.
    * Apply this package to other data. For example, how to use the model you trained.
    * Use this package to perform their own study.
-* Also describe what resources to use for this package, if appropirate. For example, point them to Collab and TPUs.
+* Also describe what resources to use for this package, if appropriate. For example, point them to Collab and TPUs.
 
-# ======================================== WIP ========================================
 ### Overview of files in repository
 
-* Describe the directory structure, if any.
-* List all relavent files and describe their role in the package.
-* An example:
-  * utils.py: various functions that are used in cleaning and visualizing data.
-  * preprocess.ipynb: Takes input data in CSV and writes out data frame after cleanup.
-  * visualization.ipynb: Creates various visualizations of the data.
-  * models.py: Contains functions that build the various models.
-  * training-model-1.ipynb: Trains the first model and saves model during training.
-  * training-model-2.ipynb: Trains the second model and saves model during training.
-  * training-model-3.ipynb: Trains the third model and saves model during training.
-  * performance.ipynb: loads multiple trained models and compares results.
-  * inference.ipynb: loads a trained model and applies it to test data to create kaggle submission.
+* DataVisualization.ipynb: Displays charts comparing the two classes across all 22 features and ranks features by importance.
+* RandomForestMachine.ipynb: Trains a Random Forest model.
+* LogisticRegressionMachine.ipynb: Trains a Logistic Regression model. 
+The rest of the PNG files that are figures meant to use in this very markdown file.
 
-* Note that all of these notebooks should contain enough text for someone to understand what is happening.
+# ======================================== WIP ========================================
 
 ### Software Setup
 * List all of the required packages.
