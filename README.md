@@ -84,11 +84,11 @@ The data can be downloaded straight from this ![Kaggle](https://www.kaggle.com/d
 
 ### Training
 
-* Split the dataset into 80% for training and 20% for testing.
-* Use the following code for Random Forest:
-`from sklearn.ensemble import RandomForestClassifier`
-`rf_model = RandomForestClassifier(random_state=42)`
-`rf_model.fit(X_train, y_train)`
+Split the dataset into 80% for training and 20% for testing.
+Use the following code for Random Forest:
+* `from sklearn.ensemble import RandomForestClassifier`
+* `rf_model = RandomForestClassifier(random_state=42)`
+* `rf_model.fit(X_train, y_train)`
 
 # ======================================== WIP ========================================
 
