@@ -94,32 +94,25 @@ Neither models require manual stopping and will end training immediately when ne
 
 Accuracy can be manually calculated, but you may have the machine automatically calculate it with this code:
 
-`from sklearn.metrics import accuracy_score`
-`accuracy = accuracy_score(y_test, y_test_pred)`
-`print(f"Test Accuracy: {accuracy:.1f}")`
+* `from sklearn.metrics import accuracy_score`
+* `accuracy = accuracy_score(y_test, y_test_pred)`
+* `print(f"Test Accuracy: {accuracy:.1f}")`
 
 Additionally, an ROC plot could be created. Both of my models had AUC scores of 1.000.
 
-`from sklearn.metrics import roc_curve, auc`
-`y_probs = model.predict_proba(X_test)[:, 1]`
-`fpr, tpr, _ = roc_curve(y_test, y_probs)`
-`roc_auc = auc(fpr, tpr)`
-`plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.3f})')`
-`plt.plot([0, 1], [0, 1], linestyle='--')`
-`plt.xlabel("False Positive Rate")`
-`plt.ylabel("True Positive Rate")`
-`plt.title("ROC Curve")`
-`plt.legend(loc="lower right")`
-`plt.grid()`
-`plt.show()`
+* `from sklearn.metrics import roc_curve, auc`
+* `y_probs = model.predict_proba(X_test)[:, 1]`
+* `fpr, tpr, _ = roc_curve(y_test, y_probs)`
+* `roc_auc = auc(fpr, tpr)`
+* `plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.3f})')`
+* `plt.plot([0, 1], [0, 1], linestyle='--')`
+* `plt.xlabel("False Positive Rate")`
+* `plt.ylabel("True Positive Rate")`
+* `plt.title("ROC Curve")`
+* `plt.legend(loc="lower right")`
+* `plt.grid()`
+* `plt.show()`
 
 ## Citations
 
 * The [dataset](https://www.kaggle.com/datasets/uciml/mushroom-classification) used is in the public domain.
-
-
-
-
-
-
-
