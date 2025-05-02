@@ -66,25 +66,29 @@ Because this dataset has a large amount of features, testing for varying levels 
 * LogisticRegressionMachine.ipynb: Trains a Logistic Regression model. 
 The rest of the PNG files that are figures meant to use in this very markdown file.
 
-# ======================================== WIP ========================================
-
 ### Software Setup
-* List all of the required packages.
-* If not standard, provide or point to instruction for installing the packages.
-* Describe how to install your package.
 
-# ======================================== WIP ========================================
+Google Colaboratory is recommended to reproduce this model because installing the necessary packages is not necessary and everything can be imported in a single or a few lines. TPU and GPU are also viable options, but Google Colab is more accessible.
+If Google Colaboratory is not being used, then you must access these packages: seaborns, matplotlib, numpy, pandas, seaborn.
 
 ### Data
 
-* Point to where they can download the data.
-* Lead them through preprocessing steps, if necessary.
+The data can be downloaded straight from this ![Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification) website.
+
+* There is no inherent missing data, but the `stalk-root` feature has some features labelled "?" that should be processed as missing data.
+* Features that have almost perfect variance, like `odor`, should be dropped before training. Other features may be dropped. I only dropped them to make sure that the 100% accuracy score was not an error.
+* Optionally, `veil-type` may be omitted because there is 0 distinction between the two classes for this category.
+* Encode the edible (0) and poisonous (1) mushroom classes for binary classification.
 
 # ======================================== WIP ========================================
 
 ### Training
 
-* Describe how to train the model
+* Split the dataset into 80% for training and 20% for testing.
+* Use the following code for Random Forest:
+`from sklearn.ensemble import RandomForestClassifier`
+`rf_model = RandomForestClassifier(random_state=42)`
+`rf_model.fit(X_train, y_train)`
 
 # ======================================== WIP ========================================
 
