@@ -77,23 +77,29 @@ The data can be downloaded straight from this ![Kaggle](https://www.kaggle.com/d
 ### Training
 
 Copy the data cleaning sections from my RandomForestMachine, and use the following code below to train your model.
+
 * `from sklearn.ensemble import RandomForestClassifier`
 * `rf_model = RandomForestClassifier(random_state=42)`
 * `rf_model.fit(X_train, y_train)`
+  
 Like the previous seciton, use the data cleaning section from my LogisticRegressionMachine, and use this other code for training.
+
 * `from sklearn.linear_model import LogisticRegression`
 * `lr_model = LogisticRegression(random_state=42)`
 * `lr_model.fit(X_train, y_train)`
+  
 Neither models require manual stopping and will end training immediately when necessary. Data was shuffled for randomization.
 
 #### Performance Evaluation
 
 Accuracy can be manually calculated, but you may have the machine automatically calculate it with this code:
+
 `from sklearn.metrics import accuracy_score`
 `accuracy = accuracy_score(y_test, y_test_pred)`
 `print(f"Test Accuracy: {accuracy:.1f}")`
 
 Additionally, an ROC plot could be created. Both of my models had AUC scores of 1.000.
+
 `from sklearn.metrics import roc_curve, auc`
 `y_probs = model.predict_proba(X_test)[:, 1]`
 `fpr, tpr, _ = roc_curve(y_test, y_probs)`
