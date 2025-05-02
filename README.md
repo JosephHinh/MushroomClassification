@@ -50,14 +50,7 @@ Because I confirmed that there was no error associated with my perfectly accurat
 
 Because this dataset has a large amount of features, testing for varying levels of toxicity would be a comfortable next step to move away from a simply binary classification task and begin a new study.
 
-# ======================================== WIP ========================================
 ## How to reproduce results 
-
-* In this section, provide instructions at least one of the following:
-   * Reproduce your results fully, including training.
-   * Apply this package to other data. For example, how to use the model you trained.
-   * Use this package to perform their own study.
-* Also describe what resources to use for this package, if appropriate. For example, point them to Collab and TPUs.
 
 ### Overview of files in repository
 
@@ -79,28 +72,44 @@ The data can be downloaded straight from this ![Kaggle](https://www.kaggle.com/d
 * Features that have almost perfect variance, like `odor`, should be dropped before training. Other features may be dropped. I only dropped them to make sure that the 100% accuracy score was not an error.
 * Optionally, `veil-type` may be omitted because there is 0 distinction between the two classes for this category.
 * Encode the edible (0) and poisonous (1) mushroom classes for binary classification.
-
-# ======================================== WIP ========================================
+* Split the dataset into 80% for training and 20% for testing.
 
 ### Training
 
-Split the dataset into 80% for training and 20% for testing.
-Use the following code for Random Forest:
+Copy the data cleaning sections from my RandomForestMachine, and use the following code below to train your model.
 * `from sklearn.ensemble import RandomForestClassifier`
 * `rf_model = RandomForestClassifier(random_state=42)`
 * `rf_model.fit(X_train, y_train)`
-
-# ======================================== WIP ========================================
+Like the previous seciton, use the data cleaning section from my LogisticRegressionMachine, and use this other code for training.
+* `from sklearn.linear_model import LogisticRegression`
+* `lr_model = LogisticRegression(random_state=42)`
+* `lr_model.fit(X_train, y_train)`
+Neither models require manual stopping and will end training immediately when necessary. Data was shuffled for randomization.
 
 #### Performance Evaluation
 
-* Describe how to run the performance evaluation.
+Accuracy can be manually calculated, but you may have the machine automatically calculate it with this code:
+`from sklearn.metrics import accuracy_score`
+`accuracy = accuracy_score(y_test, y_test_pred)`
+`print(f"Test Accuracy: {accuracy:.1f}")`
 
-# ======================================== WIP ========================================
+Additionally, an ROC plot could be created. Both of my models had AUC scores of 1.000.
+`from sklearn.metrics import roc_curve, auc`
+`y_probs = model.predict_proba(X_test)[:, 1]`
+`fpr, tpr, _ = roc_curve(y_test, y_probs)`
+`roc_auc = auc(fpr, tpr)`
+`plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.3f})')`
+`plt.plot([0, 1], [0, 1], linestyle='--')`
+`plt.xlabel("False Positive Rate")`
+`plt.ylabel("True Positive Rate")`
+`plt.title("ROC Curve")`
+`plt.legend(loc="lower right")`
+`plt.grid()`
+`plt.show()`
 
 ## Citations
 
-* Provide any references.
+* The [dataset](https://www.kaggle.com/datasets/uciml/mushroom-classification) used is in the public domain.
 
 
 
