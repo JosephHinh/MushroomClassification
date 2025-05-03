@@ -76,42 +76,11 @@ The data can be downloaded straight from this ![Kaggle](https://www.kaggle.com/d
 
 ### Training
 
-Copy the data cleaning sections from my RandomForestMachine, and use the following code below to train your model.
-
-* `from sklearn.ensemble import RandomForestClassifier`
-* `rf_model = RandomForestClassifier(random_state=42)`
-* `rf_model.fit(X_train, y_train)`
-  
-Like the previous seciton, use the data cleaning section from my LogisticRegressionMachine, and use this other code for training.
-
-* `from sklearn.linear_model import LogisticRegression`
-* `lr_model = LogisticRegression(random_state=42)`
-* `lr_model.fit(X_train, y_train)`
-  
-Neither models require manual stopping and will end training immediately when necessary. Data was shuffled for randomization.
+`RandomForestClassifier` and `LogisticRegression` may be imported from scikit-learn. There was no additional training to be done outside of these. A neural network may be used, but it is not necessary given the high accuracy of these two models already. Neither models require manual stopping and will end training immediately when necessary. Furthermore, data was shuffled for randomization.
 
 #### Performance Evaluation
 
-Accuracy can be manually calculated, but you may have the machine automatically calculate it with this code:
-
-* `from sklearn.metrics import accuracy_score`
-* `accuracy = accuracy_score(y_test, y_test_pred)`
-* `print(f"Test Accuracy: {accuracy:.1f}")`
-
-Additionally, an ROC plot could be created. Both of my models had AUC scores of 1.000.
-
-* `from sklearn.metrics import roc_curve, auc`
-* `y_probs = model.predict_proba(X_test)[:, 1]`
-* `fpr, tpr, _ = roc_curve(y_test, y_probs)`
-* `roc_auc = auc(fpr, tpr)`
-* `plt.plot(fpr, tpr, label=f'ROC Curve (AUC = {roc_auc:.3f})')`
-* `plt.plot([0, 1], [0, 1], linestyle='--')`
-* `plt.xlabel("False Positive Rate")`
-* `plt.ylabel("True Positive Rate")`
-* `plt.title("ROC Curve")`
-* `plt.legend(loc="lower right")`
-* `plt.grid()`
-* `plt.show()`
+Accuracy can be manually calculated, but you may have the machine automatically calculate it by importing `accuracy_score` from scikit-learn. Additionally, importing `roc_curve` and `auc` can be used to visualize its accuracy.
 
 ## Citations
 
